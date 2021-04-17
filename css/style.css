@@ -1,0 +1,29 @@
+body {
+    background-color: whitesmoke;
+}
+#content {
+    background-color: white;
+    width: 90%;
+    margin-left: 5%;
+    /* height: 500px; */
+}
+#candidate-panel {
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.movie-card {
+    align-items: center;
+    /* background-color: grey; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+}
+
+.poster-img {
+    height: 180px;
+    width: 120px;
+}
