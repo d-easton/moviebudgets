@@ -14,9 +14,40 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+#side-panel {
+    position: absolute;
+    right: -400px;
+    top: 0px;
+    width: 400px;
+    height: 100%;
+    background-color: #A52422;
+}
+#search-panel {
+    position: absolute;
+    left: -500px;
+    top: 0px;
+    width: 500px;
+    height: 100%;
+    background-color: #080F0F;
+}
+#side-panel-btn {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+#search-panel-btn {
+    position: absolute;
+    top: 50px;
+    left: 500px;
+}
+#palette-display {
+
+}
 .movie-card {
     align-items: center;
     /* background-color: grey; */
+    opacity: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,3 +58,4 @@ body {
     height: 180px;
     width: 120px;
 }
+

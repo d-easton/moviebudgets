@@ -19,11 +19,11 @@ const searchMovie = async (title) => {
 
 
 const movieSelected = (event, movieID) => {
-    // event.preventDefault();
     queryMovieDetails(movieID);
 }
 
 const populateConfirmationWindow = (results) => {
+    let cards = [];
     results.forEach( (elem, index) => {
         const title = elem.title;
         const id = "card" + index;
@@ -31,6 +31,11 @@ const populateConfirmationWindow = (results) => {
         const card = $("#"+id);
         card.append("<p>"+title+"</p>");
         card.append("<img class='poster-img' src='"+imgURL+elem.poster_path+"' alt='"+title+"'/></div>");
+        cards.push(id);
+    });
+    cards.forEach( (elem) => {
+        console.log(elem);
+        $("#"+elem).fadeTo(400, 1.0);
     });
 }
 
@@ -45,22 +50,44 @@ const queryMovieDetails = (movieID) => {
         dataType: "json",
    
         success: ( result ) => {
-            console.log(result);
+            palette.push( result );
         }
     });
 }
+
 
 // Callbacks
 const searchCallback = (event) => {
     event.preventDefault();
     const input = $("#search-field").val();
     queryMovieDetails(  searchMovie(input)  );
-};
+}
+
+const toggleSidePanel = () => {
+    sidebarState = !sidebarState;
+    if (sidebarState) {
+        $("#side-panel").animate({right: '0px'});
+    } 
+    else {
+        $("#side-panel").animate({right: '-400px'});
+    }
+}
+
+const toggleSearchPanel = () => {
+    searchState = !searchState;
+    if (searchState) {
+        $("#search-panel").animate({left: '0px'});
+    } 
+    else {
+        $("#search-panel").animate({left: '-500px'});
+    }
+}
 
 // Listeners
 $("#search-form").on("submit", searchCallback);
+$("#side-panel-btn").on("click", toggleSidePanel);
+$("#search-panel-btn").on("click", toggleSearchPanel);
 
 window.onload = (event) => {
-    // searchMovie("Dune");
 
 }
